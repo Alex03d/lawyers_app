@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ text }}</h1>
+<a href="{% url 'contracts:contracts_list' %}">
+  Страница со списком адвокатских соглашений
+</a>
+
+<div class="container py-5">
+    <dev>
+        <table>
+            <tr>
+                <td>Номер соглашения</td>
+                <td>Дата соглашения</td>
+                <td>Адвокат</td>
+                <td>Доверитель</td>
+                <td>Описание</td>
+            </tr>
+            {% for contract in contracts %}
+            <tr>
+                <td>е-{{ contract.pk }}</td>
+                <td>{{ contract.date|date:"d E Y" }}</td>
+                <td>{{ contract.name }}</td>
+                <td>{{ contract.client }}</td>
+                <td>{{ contract.description }}</td>
+        </table>
+    </dev>
+
+    <p>{{ contract.text }}</p>
+  {% endfor %}
+</div>
+
+{% endblock %}
