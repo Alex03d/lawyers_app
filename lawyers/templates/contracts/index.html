@@ -6,26 +6,41 @@
 </a>
 
 <div class="container py-5">
-    <dev>
-        <table>
-            <tr>
-                <td>Номер соглашения</td>
-                <td>Дата соглашения</td>
-                <td>Адвокат</td>
-                <td>Доверитель</td>
-                <td>Описание</td>
-            </tr>
-            {% for contract in contracts %}
-            <tr>
-                <td>е-{{ contract.pk }}</td>
-                <td>{{ contract.date|date:"d E Y" }}</td>
-                <td>{{ contract.name }}</td>
-                <td>{{ contract.client }}</td>
-                <td>{{ contract.description }}</td>
-        </table>
-    </dev>
+  {% for contract in contracts %}
+    <ul>
+      <b>
+        Соглашение номер е-{{ contract.pk }}
+      </b>
+      <li>
+        Дата: {{ contract.date|date:"d E Y" }}
+      </li>
+      <li>
+        Адвокат: {{ contract.name }}
+      </li>
+      <li>
+        Доверитель: {{ contract.client }}
+      </li>
+      <li>
+        Описание: {{ contract.description }}
+      </li>
+    </ul>
+  {% endfor %}
+</div>
 
-    <p>{{ contract.text }}</p>
+<div class="container py-5">
+  {% for i in clients %}
+    <ul>
+      <b>
+        Test {{ i.test_id }}
+      </b>
+      <li>
+
+      <ul>
+      <b>
+        Other {{ i.full_name }}
+      </b>
+      <li>
+    </ul>
   {% endfor %}
 </div>
 

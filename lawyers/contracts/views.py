@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Contract
+from .models import Contract, Client
 
 
 def index(request):
@@ -8,8 +8,13 @@ def index(request):
         Contract.objects.all().
         select_related('name', 'client')
     )
+    clients = (
+        Client.objects.all().
+        select_related('test')
+    )
     context = {
         'contracts': contracts,
+        'clients': clients
     }
     return render(request, 'contracts/index.html', context)
 
